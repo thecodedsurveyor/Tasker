@@ -1,7 +1,7 @@
 const Features = () => {
   return (
     <section>
-      <div className="flex flex-col items-center justify-between px-2 py-10 xl:flex-row xl:px-20">
+      <div className="flex flex-col items-center justify-between px-8 py-10 xl:flex-row xl:px-20">
         <div className="flex flex-col items-start justify-start gap-4 xl:w-1/3 xl:items-start xl:justify-start">
           <p className="text-md text-blue-500">Learn about Features</p>
           <h3 className="text-xl font-bold text-black xl:text-4xl">
@@ -78,7 +78,7 @@ const Features = () => {
           />
         </div>
 
-        <div className="mt-16 flex flex-col items-start justify-start gap-4 xl:mt-0 xl:w-2/5">
+        <div className="mt-8 flex flex-col items-start justify-start gap-4 xl:mt-0 xl:w-2/5">
           <p className="text-md text-blue-500">Perform Your All Tasks</p>
           <h3 className="text-xl font-bold text-black xl:text-4xl">
             Perform Your All Tasks At One Place
