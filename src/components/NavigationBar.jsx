@@ -6,7 +6,7 @@ const NavigationBar = () => {
     <>
       <div className="flex px-4 py-4 lg:hidden">
         <a href="#">
-          <img src="./images/logo.svg" className="w-48" alt="logo" />
+          <img src="./images/logo.svg" className="w-32" alt="logo" />
         </a>
       </div>
       {/* Menu */}
