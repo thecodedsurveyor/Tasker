@@ -4,7 +4,7 @@ import { MobileMenu } from "../ui/MobileMenu";
 const NavigationBar = () => {
   return (
     <>
-      <div className="flex justify-center py-4 lg:hidden">
+      <div className="flex px-4 py-4 lg:hidden">
         <a href="#">
           <img src="./images/logo.svg" className="w-48" alt="logo" />
         </a>
