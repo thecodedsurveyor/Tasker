@@ -1,8 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
 import NavigationBar from "./components/sections/NavigationBar";
-import ScrollToTopWithProgress from "./components/ui/ScrollToTopWithProgress";
-import ScrollToTopOnRouteChange from "./components/ui/ScrollToTopOnRouteChange";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Pricing from "./pages/Pricing";
@@ -11,18 +8,11 @@ import Products from "./pages/Products";
 import Solutions from "./pages/Solutions";
 import Resources from "./pages/Resources";
 import Enterprise from "./pages/Enterprise";
-import "./styles/theme.css";
 
 const App = () => {
-  // Set default page title
-  useEffect(() => {
-    document.title = "Tasker - Intelligent Task Management Platform";
-  }, []);
-
   return (
     <Router>
-      <div className="theme-transition min-h-screen bg-gray-50">
-        <ScrollToTopOnRouteChange />
+      <div className="min-h-screen bg-gray-50">
         <NavigationBar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -34,7 +24,6 @@ const App = () => {
           <Route path="/resources" element={<Resources />} />
           <Route path="/enterprise" element={<Enterprise />} />
         </Routes>
-        <ScrollToTopWithProgress />
       </div>
     </Router>
   );
