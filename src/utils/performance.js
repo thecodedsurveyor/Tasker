@@ -13,7 +13,7 @@ export const getBundleSize = () => {
     return {
       used: window.performance.memory.usedJSHeapSize,
       total: window.performance.memory.totalJSHeapSize,
-      limit: window.performance.memory.jsHeapSizeLimit
+      limit: window.performance.memory.jsHeapSizeLimit,
     };
   }
   return null;
@@ -24,9 +24,11 @@ export const getPageLoadMetrics = () => {
   if (window.performance && window.performance.timing) {
     const timing = window.performance.timing;
     return {
-      domContentLoaded: timing.domContentLoadedEventEnd - timing.navigationStart,
+      domContentLoaded:
+        timing.domContentLoadedEventEnd - timing.navigationStart,
       loadComplete: timing.loadEventEnd - timing.navigationStart,
-      firstPaint: window.performance.getEntriesByType('paint')[0]?.startTime || 0
+      firstPaint:
+        window.performance.getEntriesByType("paint")[0]?.startTime || 0,
     };
   }
   return null;
@@ -35,11 +37,11 @@ export const getPageLoadMetrics = () => {
 // Resource loading performance
 export const getResourceTiming = () => {
   if (window.performance && window.performance.getEntriesByType) {
-    return window.performance.getEntriesByType('resource').map(resource => ({
+    return window.performance.getEntriesByType("resource").map((resource) => ({
       name: resource.name,
       duration: resource.duration,
-      size: resource.transferSize
+      size: resource.transferSize,
     }));
   }
   return [];
-}; 
+};

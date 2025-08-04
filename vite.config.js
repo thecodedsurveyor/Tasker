@@ -42,12 +42,15 @@ export default defineConfig({
       plugins: [
         require("autoprefixer"),
         require("cssnano")({
-          preset: ["default", {
-            discardComments: {
-              removeAll: true,
+          preset: [
+            "default",
+            {
+              discardComments: {
+                removeAll: true,
+              },
+              normalizeWhitespace: true,
             },
-            normalizeWhitespace: true,
-          }],
+          ],
         }),
       ],
     },
