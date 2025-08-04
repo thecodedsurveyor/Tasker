@@ -4,7 +4,7 @@ A modern, responsive task management platform built with React, Vite, and Tailwi
 
 ## 🚀 Live Demo
 
-[View Live Demo](https://tasker-platform.vercel.app)
+[View Live Demo](https://tasker-eight-iota.vercel.app)
 
 ## 🎯 Project Overview
 
@@ -376,7 +376,13 @@ Add new components in `src/components/ui/` and follow existing patterns.
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
+### Vercel (Live Demo)
+✅ **Successfully deployed to Vercel**
+- **Live URL**: https://tasker-eight-iota.vercel.app
+- **Status**: Production ready with all features
+- **Performance**: Optimized with code splitting and lazy loading
+
+### Vercel Setup (For Your Own Projects)
 1. Connect your GitHub repository to Vercel
 2. Vercel will automatically detect the Vite configuration
 3. Deploy with zero configuration
