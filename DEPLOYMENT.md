@@ -9,6 +9,7 @@ This guide covers all deployment options for the Tasker project.
 The project is already configured for GitHub Pages deployment with automatic CI/CD.
 
 **Steps:**
+
 1. Go to your GitHub repository settings
 2. Navigate to "Pages" section
 3. Select "GitHub Actions" as the source
@@ -21,12 +22,14 @@ The project is already configured for GitHub Pages deployment with automatic CI/
 Vercel provides the best performance and features for React applications.
 
 **Steps:**
+
 1. Connect your GitHub repository to Vercel
 2. Vercel will automatically detect the Vite configuration
 3. Deploy with zero configuration
 4. Get automatic HTTPS, CDN, and preview deployments
 
 **Benefits:**
+
 - Automatic deployments on git push
 - Preview deployments for pull requests
 - Global CDN
@@ -39,12 +42,14 @@ Vercel provides the best performance and features for React applications.
 Netlify is another excellent option for static site hosting.
 
 **Steps:**
+
 1. Connect your GitHub repository to Netlify
 2. Set build command: `npm run build`
 3. Set publish directory: `dist`
 4. Configure redirects for SPA routing
 
 **Redirects Configuration:**
+
 ```toml
 [[redirects]]
   from = "/*"
@@ -57,6 +62,7 @@ Netlify is another excellent option for static site hosting.
 Firebase provides Google's infrastructure for hosting.
 
 **Steps:**
+
 1. Install Firebase CLI: `npm install -g firebase-tools`
 2. Login: `firebase login`
 3. Initialize: `firebase init hosting`
@@ -68,26 +74,26 @@ Firebase provides Google's infrastructure for hosting.
 ### Vite Configuration (`vite.config.js`)
 
 ```javascript
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: process.env.NODE_ENV === 'production' ? '/Tasker/' : '/',
+  base: process.env.NODE_ENV === "production" ? "/Tasker/" : "/",
   build: {
-    outDir: 'dist',
+    outDir: "dist",
     sourcemap: false,
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-dom'],
-          router: ['react-router-dom'],
-          animations: ['framer-motion'],
+          vendor: ["react", "react-dom"],
+          router: ["react-router-dom"],
+          animations: ["framer-motion"],
         },
       },
     },
   },
-})
+});
 ```
 
 ### GitHub Actions Workflow (`.github/workflows/deploy.yml`)
@@ -97,31 +103,31 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'npm'
-    - name: Install dependencies
-      run: npm ci
-    - name: Build
-      run: npm run build
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      if: github.ref == 'refs/heads/main'
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
 ```
 
 ## 🌐 SPA Routing Configuration
@@ -135,11 +141,13 @@ The project includes SPA routing scripts in both `index.html` and `404.html` to 
 Add a redirect rule to serve `index.html` for all routes:
 
 **Netlify (`_redirects`):**
+
 ```
 /*    /index.html   200
 ```
 
 **Vercel (`vercel.json`):**
+
 ```json
 {
   "rewrites": [
@@ -152,6 +160,7 @@ Add a redirect rule to serve `index.html` for all routes:
 ```
 
 **Firebase (`firebase.json`):**
+
 ```json
 {
   "hosting": {
@@ -170,24 +179,30 @@ Add a redirect rule to serve `index.html` for all routes:
 ## 🔒 Environment Variables
 
 ### Development
+
 Create a `.env.local` file for local development:
+
 ```env
 VITE_API_URL=http://localhost:3000
 VITE_APP_NAME=Tasker
 ```
 
 ### Production
+
 Set environment variables in your hosting platform:
 
 **Vercel:**
+
 - Go to project settings → Environment Variables
 - Add variables like `VITE_API_URL`, `VITE_APP_NAME`
 
 **Netlify:**
+
 - Go to site settings → Environment variables
 - Add your environment variables
 
 **GitHub Pages:**
+
 - Go to repository settings → Secrets and variables → Actions
 - Add repository secrets for sensitive data
 
@@ -196,6 +211,7 @@ Set environment variables in your hosting platform:
 ### Build Optimization
 
 The project is configured with:
+
 - Code splitting for vendor libraries
 - Tree shaking for unused code
 - Optimized asset loading
@@ -204,15 +220,17 @@ The project is configured with:
 ### Bundle Analysis
 
 To analyze your bundle:
+
 ```bash
 npm install --save-dev vite-bundle-analyzer
 ```
 
 Add to `vite.config.js`:
+
 ```javascript
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { visualizer } from 'vite-bundle-analyzer'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { visualizer } from "vite-bundle-analyzer";
 
 export default defineConfig({
   plugins: [
@@ -223,7 +241,7 @@ export default defineConfig({
       brotliSize: true,
     }),
   ],
-})
+});
 ```
 
 ## 🔍 Monitoring and Analytics
@@ -231,20 +249,27 @@ export default defineConfig({
 ### Google Analytics
 
 Add Google Analytics to your `index.html`:
+
 ```html
 <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
+></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'GA_MEASUREMENT_ID');
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "GA_MEASUREMENT_ID");
 </script>
 ```
 
 ### Error Tracking
 
 Consider adding error tracking services:
+
 - Sentry
 - LogRocket
 - Bugsnag
@@ -254,15 +279,18 @@ Consider adding error tracking services:
 ### Common Issues
 
 1. **404 Errors on Refresh**
+
    - Ensure SPA routing is properly configured
    - Check redirect rules in hosting platform
 
 2. **Build Failures**
+
    - Check Node.js version (requires 16+)
    - Clear node_modules and reinstall
    - Check for TypeScript errors
 
 3. **Performance Issues**
+
    - Analyze bundle size
    - Optimize images
    - Enable compression
@@ -318,6 +346,7 @@ The project is set up for continuous deployment:
 ## 📞 Support
 
 For deployment issues:
+
 - Check the hosting platform's documentation
 - Review the troubleshooting section above
 - Create an issue in the GitHub repository
@@ -326,4 +355,4 @@ For deployment issues:
 ---
 
 **Last Updated:** January 2025  
-**Version:** 1.0.0 
+**Version:** 1.0.0
